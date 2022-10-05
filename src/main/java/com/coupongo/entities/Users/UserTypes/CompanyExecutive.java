@@ -19,6 +19,9 @@ import java.util.Set;
 public class CompanyExecutive extends User {
 
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "coupons_created_by_executive",
+            joinColumns = @JoinColumn(name = "executive_id"),
+            inverseJoinColumns = @JoinColumn(name = "coupon_id"))
     private List<Coupon> couponsCreated=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
